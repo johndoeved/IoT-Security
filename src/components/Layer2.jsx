@@ -7,7 +7,7 @@ export default function Layer2({ data, refresh }) {
 
   const handleTrain = async () => {
     setLoading(true);
-    await axios.post('http://localhost:5000/api/federated/train');
+    await axios.post('/api/federated/train');
     await refresh();
     setLoading(false);
   };

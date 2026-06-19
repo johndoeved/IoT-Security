@@ -16,7 +16,7 @@ export default function App() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/state');
+      const res = await axios.get('/api/state');
       setData(res.data);
     } catch (e) {
       console.error(e);

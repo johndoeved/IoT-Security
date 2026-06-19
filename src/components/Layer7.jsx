@@ -9,7 +9,7 @@ export default function Layer7({ data, refresh }) {
   const simulateExchange = async () => {
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/quantum/exchange');
+      const res = await axios.post('/api/quantum/exchange');
       setLatestExchange(res.data);
       await refresh();
     } catch (e) {

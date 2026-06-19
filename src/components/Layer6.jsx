@@ -10,7 +10,7 @@ export default function Layer6({ data }) {
     setLoading(true);
     setScanResult(null);
     try {
-      const res = await axios.post('http://localhost:5000/api/multivector/scan');
+      const res = await axios.post('/api/multivector/scan');
       setScanResult(res.data);
     } catch (e) {
       console.error(e);

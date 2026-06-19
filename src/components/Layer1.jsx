@@ -7,7 +7,7 @@ export default function Layer1({ data, refresh }) {
 
   const handleSimulate = async () => {
     setLoading(true);
-    await axios.post('http://localhost:5000/api/tinyml/simulate');
+    await axios.post('/api/tinyml/simulate');
     await refresh();
     setLoading(false);
   };

@@ -7,7 +7,7 @@ export default function Layer3({ data, refresh }) {
 
   const toggleDefense = async () => {
     setLoading(true);
-    await axios.post('http://localhost:5000/api/adversarial/toggle');
+    await axios.post('/api/adversarial/toggle');
     await refresh();
     setLoading(false);
   };

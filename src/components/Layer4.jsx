@@ -8,7 +8,7 @@ export default function Layer4({ data, refresh }) {
   const toggleStatus = async (ip, currentStatus) => {
     setLoading(ip);
     const action = currentStatus === 'Trusted' ? 'quarantine' : 'verify';
-    await axios.post('http://localhost:5000/api/zerotrust/quarantine', { ip, action });
+    await axios.post('/api/zerotrust/quarantine', { ip, action });
     await refresh();
     setLoading(null);
   };
