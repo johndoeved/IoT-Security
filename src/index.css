@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: var(--color-slate-900);
+    color: var(--color-slate-100);
+    transition: background-color 0.3s, color 0.3s;
+    --glow-color: rgba(34, 211, 238, 0.5);
+    --glow-active-color: rgba(34, 211, 238, 0.8);
+    --glow-border: #67e8f9;
+  }
+
+  body.light-mode {
+    /* Slates mapped to light theme equivalents */
+    --color-slate-950: #ffffff;
+    --color-slate-900: #f8fafc;
+    --color-slate-800: #e2e8f0;
+    --color-slate-700: #cbd5e1;
+    --color-slate-600: #94a3b8;
+    --color-slate-500: #64748b;
+    --color-slate-400: #475569;
+    --color-slate-300: #334155;
+    --color-slate-200: #1e293b;
+    --color-slate-100: #0f172a;
+    --color-white: #020617; /* Default text-white to dark for general readability */
+    
+    /* Accents - darken them for light mode readability against white background */
+    --color-cyan-400: #0891b2; /* cyan-600 */
+    --color-cyan-300: #0e7490; /* cyan-700 */
+    --color-blue-400: #2563eb; /* blue-600 */
+    --color-blue-500: #1d4ed8; /* blue-700 */
+    --color-amber-400: #d97706; /* amber-600 */
+    --color-emerald-400: #059669; /* emerald-600 */
+    --color-purple-400: #9333ea; /* purple-600 */
+    --color-rose-400: #e11d48; /* rose-600 */
+    --color-green-400: #16a34a; /* green-600 */
+    --color-red-400: #dc2626; /* red-600 */
+    
+    /* Glow Colors */
+    --glow-color: rgba(6, 182, 212, 0.5);
+    --glow-active-color: rgba(6, 182, 212, 0.8);
+    --glow-border: #0891b2;
+  }
+
+  /* Force button text to remain white on strongly colored backgrounds in light mode */
+  body.light-mode button[class*="bg-cyan-"],
+  body.light-mode button[class*="bg-amber-"],
+  body.light-mode button[class*="bg-rose-"],
+  body.light-mode button[class*="bg-blue-"],
+  body.light-mode button[class*="bg-emerald-"] {
+    color: #ffffff !important;
+  }
+  
+  /* Keep icons white inside gradient backgrounds */
+  body.light-mode div[class*="bg-gradient-to-"] svg {
+    color: #ffffff !important;
+  }
+}
+
+@layer components {
+  /* Glowing frame effect requested by user */
+  button, .interactive-glow {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  button:hover, .interactive-glow:hover {
+    box-shadow: 0 0 15px var(--glow-color);
+    border-color: var(--glow-color) !important;
+    z-index: 10;
+    position: relative;
+  }
+
+  button:active, .interactive-glow:active {
+    box-shadow: 0 0 25px var(--glow-active-color);
+    border-color: var(--glow-border) !important;
+    transform: scale(0.98);
+  }
+}
